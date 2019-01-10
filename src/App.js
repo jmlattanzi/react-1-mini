@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
     const friends = this.state.friends.map((friend, index) => (
-      <div key={`friend-${index}`}>
+      <div key={`friend-${index}-${friend.name}`} className="FriendBox">
         <img width="100px" src={friend.picture} alt=""/>
         <span>{friend.name}</span>
       </div>
@@ -42,11 +42,26 @@ class App extends Component {
 
     return (
       <div className="App">
-        picture: <input type="text" onChange={(e) => this.updatePicture(e.target.value)}/>
-        name: <input type="text" onChange={(e) => this.updateName(e.target.value)}/>
-        <button onClick={() => this.addFriend()}>add friend</button>
+        <h1>the gang's all here</h1>
+        <div className="Input">
+          <input 
+            className="InputArea"
+            type="text" 
+            placeholder="picture" 
+            onChange={(e) => this.updatePicture(e.target.value)}/>
 
-        {friends}
+          <input 
+            className="InputArea"
+            type="text" 
+            placeholder="name" 
+            onChange={(e) => this.updateName(e.target.value)}/>
+
+          <button onClick={() => this.addFriend()}>add friend</button>
+        </div>
+
+        <div className="Friends">
+          {friends}
+        </div>
       </div>
     );
   }
